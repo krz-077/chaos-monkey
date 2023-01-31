@@ -1,0 +1,4 @@
+destroyer:
+  configuration:
+    namespace: ${NAMESPACE}
+    label: ${LABEL}

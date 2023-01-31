@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: chaos-monkey-config
+  namespace: chaos-monkey
+data:
+  NAMESPACE: "testing"
+  LABEL: "nginx-red"
