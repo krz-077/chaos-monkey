@@ -43,11 +43,13 @@ public class DefaultDestroyerService implements DestroyerService {
         return deletedPod;
     }
 
+/*
     public static void main(String[] args) {
 
         DefaultDestroyerService defaultDestroyerService = new DefaultDestroyerService(new OfficialKubernetesApi(new CoreV1Api()), new JdkRandomService(new SecureRandom()));
 
         defaultDestroyerService.findAndDelete(new PodParameters(args[0], args[1]));
     }
+*/
 }
 
