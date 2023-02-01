@@ -1,3 +1,4 @@
+/*
 package io.orefice.chaos.monkey.application.controller;
 
 import io.orefice.chaos.monkey.model.PodParameters;
@@ -22,3 +23,4 @@ public class DestroyerController {
                 .orElse(ResponseEntity.notFound().build());
     }
 }
+*/

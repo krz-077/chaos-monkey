@@ -33,7 +33,6 @@ if they have a specific label and document how a user would configure it.
 
 ```text
 |-- docs # exercise guidelines
-|-- http # dir with http rest call
 |-- k8s # k8s manifests for chaos-monkey application
 |-- src # source code
 `-- testing_namespace # k8s manifests for testing namespace
@@ -82,18 +81,8 @@ The Application is configured thanks to a configMap that is explained in the nex
 
 ### Chaos Monkey Application
 
-The chaos-monkey application is a spring boot application equipped with an API and a scheduled job. The API and the scheduled
-job destroy a random pod taken from a namespace and a label assigned to the deployment. The API is the following:
 
-```text
-GET /destroy
-
-parameters:
-- namespace
-- label
-```
-
-Instead, the scheduled job (Quartz) takes the previous parameters through ```application.yaml``` that use environment variables
+The scheduled job (Quartz) takes the previous parameters through ```application.yaml``` that use environment variables
 configured with a [configMap](https://kubernetes.io/docs/concepts/configuration/configmap/) and every 30 sec triggers a pod deletion.
 By default, **the application is configured to kill a random pod with the label red**.
 
@@ -113,7 +102,7 @@ The application is tested with unit test and integration test.
 
 ## Considerations
 
-The proposed solution is guided by the scenario hints present in the document. Another naive solution that can be proposed,
+The proposed solution is guided by the scenario hints present in the document. Another solution that can be proposed,
 can reduce the pressure in the cluster. Instead of having a standalone application like this one, it's possible to create
 a [k8s job](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/).
 
@@ -122,7 +111,7 @@ a [k8s job](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/
 The entire scenario can be executed with a [bash script](/run.sh):
 
 ```shell
-user@host$: chmod +x run.sh
-user@host$: ./run.sh
+chmod +x run.sh
+./run.sh
 ```
 in the same way we can clean the scenario with [clean.sh](/clean.sh).
