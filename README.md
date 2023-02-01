@@ -63,12 +63,6 @@ the pods in case of failure, which fits the actual use case and furthermore, [we
 ```
 
 
-Instead, the application that injects pod deletions using the k8s API, is deployed with a [k8s pod resource](https://kubernetes.io/docs/concepts/workloads/pods/).
-I used this k8s resource because from the description of the exercise is indicated to deploy a *ChaosMonkeyPod"* which
-seems referring to a Pod but usually it's [discourage to use this kind in favour of workload resources like 
-Deployment, ReplicaSet, StatefulSet because you cannot manage different state](https://stackoverflow.com/a/60570518). On
-another hand, it's enough for the exercise the type of k8s resource assigned for the chaos-monkey application.
-
 In order to access to the k8s API, it's necessary to grant the application (Pod) with rights that can delete a pod in another namespace. 
 The service-account resource defines the grant level which in the ```default``` configuration isn't enough to achieve the
 exercise goal. For this reason, I have created a [cluster role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
@@ -121,8 +115,7 @@ The application is tested with unit test and integration test.
 
 The proposed solution is guided by the scenario hints present in the document. Another naive solution that can be proposed,
 can reduce the pressure in the cluster. Instead of having a standalone application like this one, it's possible to create
-a [k8s job](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) that schedule a java (cli) containerized.
-The actual code can be easily refactorized in a solution that can build a web application and a cli.
+a [k8s job](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/).
 
 ## How To run it
 
