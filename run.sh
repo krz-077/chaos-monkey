@@ -25,4 +25,4 @@ kubectl apply -f ./k8s/pod.yaml
 kubectl wait --namespace=chaos-monkey --for=condition=Ready pod/chaos-monkey-pod
 
 # port-forward locally the application
-kubectl --namespace=chaos-monkey port-forward $(kubectl get pod --namespace=chaos-monkey -l app=chaos-monkey -o jsonpath="{.items[0].metadata.name}") 8080
+#kubectl --namespace=chaos-monkey port-forward $(kubectl get pod --namespace=chaos-monkey -l app=chaos-monkey -o jsonpath="{.items[0].metadata.name}") 8080
